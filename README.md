@@ -17,6 +17,9 @@ If images larger than the mentioned limit are received, the quality of the image
 
 
 Future changes:
+
 Add a frontend with react
+
 Do automated testing with cypress
+
 Deploying with docker
