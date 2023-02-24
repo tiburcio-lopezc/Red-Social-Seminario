@@ -1,4 +1,4 @@
-# Red-Social-Seminario
+# Social-Network-PartOne
 College project 
 Professor: Ing.Facundo Gomez
 February, 28th, 2023
