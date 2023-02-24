@@ -24,13 +24,15 @@ var userSchema = new mongoose.Schema({
     required: true
   }
 });
-/* El middleware "pre-save" se usa para cifrar la contraseña 
+/* El middleware "pre-save" para cifrar la contraseña 
 del usuario antes de guardarla en la base de datos. 
+
 Para hacer esto, se utiliza la función bcrypt.hash() */
 
 userSchema.pre('save', function (next) {
   var user = this;
   bcrypt.hash(user.password, 10, function (err, hash) {
+    //la contraseña se hashea 10 veces
     if (err) {
       return next(err);
     }
@@ -49,18 +51,14 @@ userSchema.methods.isCorrect = function (upassword, callback) {
     }
   });
 };
-/*  bcrypt.compare() se utiliza para comparar contraseña 
-con la contraseña del usuario actual (this.password). como la función de comparación es asíncrona,
-pongo un callback que se llamará una vez que se complete la comparación. */
+/*  bcrypt.compare() comparo contraseña con la existente en documento de la database */
 
 /* isCorrect verifica la validez de la contraseña del usuario
-al compararla con la contraseña almacenada en la base de datos de mongodb. 
+
 Si hay algún error durante la comparación, el error se devuelve a través 
 de una funcion callback, sino devuelvo
 un valor booleano indicando si las contraseñas son iguales o no. */
 
 
 var User = mongoose.model('User', userSchema);
-module.exports = User; //Los modulos de registro y authentication van juntos porque tuve muchos problemas al hacerlos separados. 
-//me ahorro tiempo y codigo hacerlo asi
-//la carpeta de ModuloAuth quedara ahi hasta que decida borrarla cuando la app este completa y segura
+module.exports = User;

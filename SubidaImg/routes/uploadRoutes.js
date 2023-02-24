@@ -3,31 +3,16 @@ const router = express.Router();
 const uploadController = require("../controller/uploadController");
 const imageCompressionMiddleware = require("../middleware/imageCompressionMiddleware");
 const multer = require("multer");
-/* const path = require('path'); */
 
 
-const storage = multer.memoryStorage(/* {
-  
-  destination: function (req, file, cb) {
-    cb(null, './public/images');
-  },
-  filename: function (req, file, cb) {
-    
-    cb(null, file.fieldname + '-' +  Date.now()  + path.extname(file.originalname));
-  }
-} */);
-//const timestamp = new Date().toISOString();
+
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-
-/* router.get('/pato', function(req, res) {
-    const archivo =  'C:/Users/damas/Desktop/finalseminarioiii/public/imagen.html';
-  res.sendFile(archivo);
-}); */
 
 router.post(
   "/upload",
   upload.single("image"), 
-  imageCompressionMiddleware.pirula,
+  imageCompressionMiddleware.compressimg,
   uploadController.uploadImage
 );
 

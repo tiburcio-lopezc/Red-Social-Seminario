@@ -25,9 +25,7 @@ exports.uploadImage = function _callee(req, res) {
         case 2:
           image = _context.sent;
           image.save();
-          res.send('imagen subida bien');
-          /*  .then(() => res.send("Imagen subida con éxito"))
-           .catch((error) => res.send(error)); */
+          res.send('imagen subida con exito');
 
         case 5:
         case "end":

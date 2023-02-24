@@ -3,8 +3,6 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 
 exports.uploadImage = async(req, res) => {
- /*  console.log(req.file)
-  console.log(req.body) */
 
 
    const image =  await new Image({
@@ -18,10 +16,8 @@ exports.uploadImage = async(req, res) => {
 
 
      image.save()
-    res.send('imagen subida bien')
-   /*  .then(() => res.send("Imagen subida con éxito"))
-    .catch((error) => res.send(error)); */
-    
+    res.send('imagen subida con exito')
+
 }; 
 
 const upload = multer({ storage });

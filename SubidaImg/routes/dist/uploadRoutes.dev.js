@@ -9,18 +9,10 @@ var uploadController = require("../controller/uploadController");
 var imageCompressionMiddleware = require("../middleware/imageCompressionMiddleware");
 
 var multer = require("multer");
-/* const path = require('path'); */
 
-
-var storage = multer.memoryStorage(); //const timestamp = new Date().toISOString();
-
+var storage = multer.memoryStorage();
 var upload = multer({
   storage: storage
 });
-/* router.get('/pato', function(req, res) {
-    const archivo =  'C:/Users/damas/Desktop/finalseminarioiii/public/imagen.html';
-  res.sendFile(archivo);
-}); */
-
-router.post("/upload", upload.single("image"), imageCompressionMiddleware.pirula, uploadController.uploadImage);
+router.post("/upload", upload.single("image"), imageCompressionMiddleware.compressimg, uploadController.uploadImage);
 module.exports = router;
