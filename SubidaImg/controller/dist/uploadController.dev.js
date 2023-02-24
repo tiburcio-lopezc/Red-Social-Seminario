@@ -12,9 +12,7 @@ exports.uploadImage = function _callee(req, res) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          console.log(req.file);
-          console.log(req.body);
-          _context.next = 4;
+          _context.next = 2;
           return regeneratorRuntime.awrap(new Image({
             name: req.body.name,
             desc: req.body.desc,
@@ -24,16 +22,14 @@ exports.uploadImage = function _callee(req, res) {
             }
           }));
 
-        case 4:
+        case 2:
           image = _context.sent;
-          _context.next = 7;
-          return regeneratorRuntime.awrap(image.save());
+          image.save();
+          res.send('imagen subida bien');
+          /*  .then(() => res.send("Imagen subida con éxito"))
+           .catch((error) => res.send(error)); */
 
-        case 7:
-          _context.next = 9;
-          return regeneratorRuntime.awrap(res.send('imagen subida bien'));
-
-        case 9:
+        case 5:
         case "end":
           return _context.stop();
       }
