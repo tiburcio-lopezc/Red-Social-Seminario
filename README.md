@@ -1,6 +1,6 @@
 # Red-Social-Seminario
 College project 
-Professor: Ing.Facundo Algazan
+Professor: Ing.Facundo Gomez
 February, 28th, 2023
 Universidad del Norte Santo Tomas de Aquino.
 
@@ -16,10 +16,9 @@ If images larger than the mentioned limit are received, the quality of the image
 
 
 
-Future changes:
+This is a Backend with Nodejs project.
 
-Add a frontend with react
+To make this work, dependencies must be installed.
 
-Do automated testing with cypress
 
-Deploying with docker
+Npm i bcrypt mongoose mongodb multer sharp express fs body-parser @fortawesome/fontawesome-free
