@@ -1,0 +1,34 @@
+{
+  "name": "app-seminario",
+  "version": "1.0.0",
+  "description": "App para trabajo final seminario III 2022",
+  "main": "index.js",
+  "scripts": {
+    "start": "env-cmd -f ./.env  nodemon index.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "modulos registro auth y posteos"
+  ],
+  "author": "tiburcio lopez",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "env-cmd": "^10.1.0",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "mdb-react-ui-kit": "^5.1.0",
+    "mongodb": "^5.0.0",
+    "mongoose": "^6.9.1",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.31.3",
+    "socket.io": "^4.6.0",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
