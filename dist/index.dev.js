@@ -2,7 +2,16 @@
 
 var express = require('express');
 
-var app = express(); // middleware bodyparser para analizar los datos de solicitud en aplicación web
+var app = express();
+
+var http = require('http');
+
+var server = http.createServer(app);
+
+var _require = require("socket.io"),
+    Server = _require.Server;
+
+var io = new Server(server); // middleware bodyparser para analizar los datos de solicitud en aplicación web
 
 var bodyParser = require('body-parser');
 
@@ -26,6 +35,29 @@ app.use(bodyParser.urlencoded({
 app.use('/api', require('./SubidaImg/routes/uploadRoutes'));
 app.use('/api', require('./ModuloRegistro/routes/registro'));
 app.use('/api', require('./ModuloRegistro/routes/authentication'));
-app.listen(3000, function () {
-  console.log('Servidor iniciado en el puerto 3000');
+/* app.listen(3000, function() {
+    console.log('Servidor iniciado en el puerto 3000');
+}); */
+
+server.listen(3000, function () {
+  console.log('Servidor escuchando en puerto:3000');
+});
+var users = {}; //chat app
+
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html');
+});
+io.on('connection', function (socket) {
+  console.log('Se conectó un usuario');
+  socket.on('disconnect', function () {
+    console.log('Se desconectó un usuario');
+  });
+  socket.on('chat message', function (msg) {
+    console.log('Mensaje: ' + msg);
+  });
+});
+io.on('connection', function (socket) {
+  socket.on('chat message', function (msg) {
+    io.emit('chat message', msg);
+  });
 });
