@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  web:
+    container_name: app-node
+    build: .
+    ports:
+      - "5000:3000"
+      
+    
+  mongo:
+    container_name: mymongodatabase
+    image: mongo 
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: tibulopez
+      MONGO_INITDB_ROOT_PASSWORD: password 
+    volumes:
+      - type: volume
+        source: database
+        target: /data/db
+         
+
+
+volumes: 
+  database:

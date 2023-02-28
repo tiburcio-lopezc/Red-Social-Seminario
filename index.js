@@ -6,25 +6,21 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-// middleware bodyparser para analizar los datos de solicitud en aplicación web
-
+// middleware bodyparser para analizar  los datos de solicitud en aplicación web
 
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
 const uploadRoutes = require("./SubidaImg/routes/uploadRoutes");
-
 
 //conecto base de datos en direccion 27017. 
 
+mongoose.connect( "mongodb://127.0.0.1:27017", {useNewUrlParser: true, useUnifiedTopology: true});
 
-mongoose.connect('mongodb://localhost/27017', {useNewUrlParser: true, useUnifiedTopology: true});
-
- mongoose.createConnection(
+ /* mongoose.createConnection(
   "mongodb://localhost:27017/imageUpload",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
-
+ */
 
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,7 +39,7 @@ server.listen(3000, () => {
   console.log('Servidor escuchando en puerto:3000');
 });
 
-let users = {};
+
 
 //chat app
 
@@ -70,5 +66,3 @@ io.on('connection', (socket) => {
     io.emit('chat message', msg);
   });
 });
-
-
