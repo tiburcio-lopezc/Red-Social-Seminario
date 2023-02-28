@@ -16,7 +16,7 @@ If images larger than the mentioned limit are received, the quality of the image
 
 
 
-This is a Backend with Nodejs project.
+This is a Backend Nodejs/Mongo project.
 
 To make this work, dependencies must be installed.
 
